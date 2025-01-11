@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>高级待办事项</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>我的待办事项</h1>
+        
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="搜索待办事项...">
+        </div>
+
+        <!-- 添加待办事项 -->
+        <div class="add-todo">
+            <input type="text" id="todoInput" placeholder="输入新的待办事项...">
+            <select id="categorySelect">
+                <option value="工作">工作</option>
+                <option value="生活">生活</option>
+                <option value="学习">学习</option>
+                <option value="其他">其他</option>
+            </select>
+            <button onclick="addTodo()">添加</button>
+        </div>
+
+        <!-- 工具栏 -->
+        <div class="toolbar">
+            <div class="filters">
+                <button onclick="filterTodos('all')" class="active">全部</button>
+                <button onclick="filterTodos('active')">未完成</button>
+                <button onclick="filterTodos('completed')">已完成</button>
+            </div>
+            <div class="sort">
+                <select id="sortSelect" onchange="sortTodos()">
+                    <option value="date-asc">日期 ↑</option>
+                    <option value="date-desc">日期 ↓</option>
+                    <option value="name-asc">名称 ↑</option>
+                    <option value="name-desc">名称 ↓</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 待办事项列表 -->
+        <div class="todo-list" id="todoList">
+            <!-- 待办事项将通过JavaScript动态添加到这里 -->
+        </div>
+
+        <!-- 添加编辑模态框 -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <h2>编辑任务</h2>
+                <input type="text" id="editInput">
+                <select id="editCategory">
+                    <option value="工作">工作</option>
+                    <option value="生活">生活</option>
+                    <option value="学习">学习</option>
+                    <option value="其他">其他</option>
+                </select>
+                <div class="time-settings">
+                    <label>
+                        计时设置（分钟）：
+                        <input type="number" id="editTimer" min="1" value="25">
+                    </label>
+                </div>
+                <div class="modal-buttons">
+                    <button onclick="saveEdit()">保存</button>
+                    <button onclick="closeModal()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
